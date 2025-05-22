@@ -1,7 +1,15 @@
 <template>
   <div class="dashboard">
     <div class="dashboard-header">
-      <h1>Dashboard Técnico</h1>
+      <div class="header-content">
+        <h1>Dashboard Técnico</h1>
+        <div class="header-actions">
+          <router-link to="/kpis" class="action-button">
+            <span class="icon">📈</span>
+            Ver KPIs
+          </router-link>
+        </div>
+      </div>
       <div class="date-range">
         <span>Últimos 30 días</span>
       </div>
@@ -119,24 +127,45 @@ const updateRealTimeData = () => {
   }
 };
 
-// Opciones para el gráfico de tiempo de respuesta (ApexCharts)
+// Actualizar las opciones de los gráficos para el tema oscuro
 const serverResponseOptions = {
   chart: {
     type: 'line',
-    toolbar: { show: false }
+    toolbar: { show: false },
+    background: 'transparent'
   },
-  colors: ['#1a237e'],
+  colors: ['#7c4dff'],
   stroke: {
     curve: 'smooth',
     width: 2
   },
+  grid: {
+    borderColor: 'var(--chart-grid-color)',
+    strokeDashArray: 4
+  },
   xaxis: {
-    categories: technicalChartData.serverResponse.labels
+    categories: technicalChartData.serverResponse.labels,
+    labels: {
+      style: {
+        colors: 'var(--chart-text-color)'
+      }
+    }
   },
   yaxis: {
     title: {
-      text: 'Tiempo (ms)'
+      text: 'Tiempo (ms)',
+      style: {
+        color: 'var(--chart-text-color)'
+      }
+    },
+    labels: {
+      style: {
+        colors: 'var(--chart-text-color)'
+      }
     }
+  },
+  theme: {
+    mode: 'dark'
   }
 };
 
@@ -201,7 +230,33 @@ onMounted(() => {
       },
       options: {
         responsive: true,
-        maintainAspectRatio: false
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            display: false
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            grid: {
+              color: 'rgba(255, 255, 255, 0.1)'
+            },
+            ticks: {
+              color: 'var(--text-secondary)'
+            }
+          },
+          x: {
+            grid: {
+              color: 'rgba(255, 255, 255, 0.1)'
+            },
+            ticks: {
+              color: 'var(--text-secondary)',
+              maxRotation: 45,
+              minRotation: 45
+            }
+          }
+        }
       }
     });
   }
@@ -285,7 +340,7 @@ onUnmounted(() => {
 <style scoped>
 .dashboard {
   padding: 24px;
-  background-color: #f5f7fa;
+  background-color: var(--background-color);
   min-height: 100vh;
 }
 
@@ -294,17 +349,55 @@ onUnmounted(() => {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 24px;
+  padding: 0 24px;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.header-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.action-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.action-button:hover {
+  background-color: var(--primary-color-dark);
+  transform: translateY(-1px);
 }
 
 .dashboard-header h1 {
-  font-size: 24px;
-  color: #1a237e;
+  font-size: 28px;
+  color: var(--text-primary);
   margin: 0;
+  font-weight: 600;
 }
 
 .date-range {
-  color: #666;
+  color: var(--text-secondary);
   font-size: 14px;
+  background-color: var(--surface-color);
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
 }
 
 .dashboard-grid {
@@ -317,58 +410,79 @@ onUnmounted(() => {
 }
 
 .kpi-card {
-  background: white;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  grid-column: span 1;
+  background: var(--card-color);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border-color);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.kpi-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .kpi-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
 
 .kpi-header h3 {
   font-size: 16px;
-  color: #666;
+  color: var(--text-secondary);
   margin: 0;
 }
 
 .trend {
   font-size: 14px;
   font-weight: 500;
-  padding: 4px 8px;
-  border-radius: 4px;
+  padding: 4px 12px;
+  border-radius: 20px;
 }
 
 .trend.positive {
-  background-color: #e8f5e9;
-  color: #2e7d32;
+  background-color: rgba(0, 230, 118, 0.1);
+  color: var(--success-color);
 }
 
 .trend.negative {
-  background-color: #ffebee;
-  color: #c62828;
+  background-color: rgba(255, 23, 68, 0.1);
+  color: var(--danger-color);
 }
 
 .kpi-value {
-  font-size: 24px;
+  font-size: 32px;
   font-weight: 600;
-  color: #1a237e;
+  color: var(--text-primary);
 }
 
 .chart-card {
-  background: white;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: var(--card-color);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border-color);
   grid-column: span 1;
   height: 400px;
   display: flex;
   flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.chart-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.chart-card canvas {
+  max-height: 300px;
+  width: 100% !important;
+  height: 100% !important;
 }
 
 .chart-card.wide {
@@ -377,9 +491,9 @@ onUnmounted(() => {
 }
 
 .chart-card h3 {
-  font-size: 16px;
-  color: #666;
-  margin: 0 0 16px 0;
+  font-size: 18px;
+  color: var(--text-primary);
+  margin: 0 0 20px 0;
   flex-shrink: 0;
 }
 
@@ -392,8 +506,9 @@ onUnmounted(() => {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
   overflow-y: auto;
+  padding-right: 8px;
 }
 
 .error-bar {
@@ -404,14 +519,15 @@ onUnmounted(() => {
 
 .error-label {
   font-size: 14px;
-  color: #666;
+  color: var(--text-secondary);
 }
 
 .error-bar-container {
   height: 24px;
-  background-color: #f5f5f5;
+  background-color: var(--surface-color);
   border-radius: 12px;
   overflow: hidden;
+  border: 1px solid var(--border-color);
 }
 
 .error-bar-fill {
@@ -423,7 +539,7 @@ onUnmounted(() => {
 }
 
 .error-value {
-  color: white;
+  color: var(--text-primary);
   font-size: 12px;
   font-weight: 500;
 }
@@ -446,6 +562,12 @@ onUnmounted(() => {
   
   .chart-card.wide {
     grid-column: span 1;
+  }
+
+  .dashboard-header {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
   }
 }
 </style> 

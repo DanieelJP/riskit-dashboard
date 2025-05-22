@@ -25,14 +25,21 @@ import { IonApp, IonHeader, IonToolbar, IonTitle, IonButtons, IonButton, IonCont
 
 <style>
 :root {
-  --primary-color: #1a237e;
-  --secondary-color: #0d47a1;
-  --success-color: #2e7d32;
-  --warning-color: #f57c00;
-  --danger-color: #c62828;
-  --background-color: #f5f7fa;
-  --text-color: #333;
-  --text-secondary: #666;
+  --primary-color: #7c4dff;
+  --primary-light: #b47cff;
+  --primary-dark: #3f1dcb;
+  --secondary-color: #00e5ff;
+  --success-color: #00e676;
+  --warning-color: #ffd600;
+  --danger-color: #ff1744;
+  --background-color: #121212;
+  --surface-color: #1e1e1e;
+  --card-color: #2d2d2d;
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --border-color: #404040;
+  --chart-grid-color: #404040;
+  --chart-text-color: #b3b3b3;
 }
 
 * {
@@ -44,13 +51,14 @@ import { IonApp, IonHeader, IonToolbar, IonTitle, IonButtons, IonButton, IonCont
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   background-color: var(--background-color);
-  color: var(--text-color);
+  color: var(--text-primary);
   line-height: 1.5;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
   line-height: 1.2;
+  color: var(--text-primary);
 }
 
 button {
@@ -63,10 +71,15 @@ button {
 input, select, textarea {
   font-family: inherit;
   font-size: inherit;
+  background-color: var(--surface-color);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 8px 12px;
 }
 
 a {
-  color: var(--primary-color);
+  color: var(--primary-light);
   text-decoration: none;
 }
 
@@ -75,26 +88,53 @@ a:hover {
 }
 
 ion-header {
-  --background: white;
-  --border-color: #eee;
+  --background: var(--surface-color);
+  --border-color: var(--border-color);
 }
 
 ion-toolbar {
   --padding-start: 16px;
   --padding-end: 16px;
+  --background: var(--surface-color);
 }
 
 ion-title {
-  color: var(--primary-color);
+  color: var(--text-primary);
   font-weight: 600;
 }
 
 ion-button {
-  --color: var(--primary-color);
+  --color: var(--primary-light);
+  --background: var(--primary-dark);
+  --background-hover: var(--primary-color);
+  --background-activated: var(--primary-color);
   font-weight: 500;
+  text-transform: none;
+  --border-radius: 8px;
+  --padding-start: 16px;
+  --padding-end: 16px;
 }
 
 ion-content {
   --background: var(--background-color);
+}
+
+/* Scrollbar personalizado */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-dark);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color);
 }
 </style>
