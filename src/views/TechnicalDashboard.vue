@@ -140,14 +140,14 @@ const serverResponseOptions = {
     width: 2
   },
   grid: {
-    borderColor: 'var(--chart-grid-color)',
+    borderColor: 'rgba(255, 255, 255, 0.1)',
     strokeDashArray: 4
   },
   xaxis: {
     categories: technicalChartData.serverResponse.labels,
     labels: {
       style: {
-        colors: 'var(--chart-text-color)'
+        colors: '#ffffff'
       }
     }
   },
@@ -155,12 +155,12 @@ const serverResponseOptions = {
     title: {
       text: 'Tiempo (ms)',
       style: {
-        color: 'var(--chart-text-color)'
+        color: '#ffffff'
       }
     },
     labels: {
       style: {
-        colors: 'var(--chart-text-color)'
+        colors: '#ffffff'
       }
     }
   },
@@ -178,18 +178,24 @@ const serverResponseSeries = [{
 const concurrentSessionsOption = {
   xAxis: {
     type: 'category',
-    data: technicalChartData.concurrentSessions.xAxis.data
+    data: technicalChartData.concurrentSessions.xAxis.data,
+    axisLabel: {
+      color: '#ffffff'
+    }
   },
   yAxis: {
     type: 'value',
-    name: 'Sesiones'
+    name: 'Sesiones',
+    axisLabel: {
+      color: '#ffffff'
+    }
   },
   series: [{
     type: 'line',
     areaStyle: {},
     data: technicalChartData.concurrentSessions.series[0].data,
     itemStyle: {
-      color: '#1a237e'
+      color: '#7c4dff'
     }
   }]
 };
@@ -225,7 +231,7 @@ onMounted(() => {
         datasets: [{
           label: 'Errores por tipo',
           data: technicalChartData.transactionErrors.datasets[0].data,
-          backgroundColor: technicalChartData.transactionErrors.datasets[0].backgroundColor
+          backgroundColor: '#7c4dff'
         }]
       },
       options: {
@@ -234,6 +240,13 @@ onMounted(() => {
         plugins: {
           legend: {
             display: false
+          },
+          tooltip: {
+            titleColor: '#ffffff',
+            bodyColor: '#ffffff',
+            backgroundColor: '#1e1e1e',
+            borderColor: '#333333',
+            borderWidth: 1
           }
         },
         scales: {
@@ -243,7 +256,10 @@ onMounted(() => {
               color: 'rgba(255, 255, 255, 0.1)'
             },
             ticks: {
-              color: 'var(--text-secondary)'
+              color: '#ffffff',
+              font: {
+                size: 12
+              }
             }
           },
           x: {
@@ -251,9 +267,12 @@ onMounted(() => {
               color: 'rgba(255, 255, 255, 0.1)'
             },
             ticks: {
-              color: 'var(--text-secondary)',
+              color: '#ffffff',
               maxRotation: 45,
-              minRotation: 45
+              minRotation: 45,
+              font: {
+                size: 12
+              }
             }
           }
         }
@@ -278,7 +297,7 @@ onMounted(() => {
         datasets: [{
           label: 'Transacciones/segundo',
           data: [...realTimeData.value.values],
-          borderColor: '#1a237e',
+          borderColor: '#7c4dff',
           tension: 0.4,
           fill: false
         }]
@@ -293,14 +312,22 @@ onMounted(() => {
           y: {
             beginAtZero: true,
             suggestedMax: 50,
+            grid: {
+              color: 'rgba(255, 255, 255, 0.1)'
+            },
             ticks: {
-              stepSize: 10
+              stepSize: 10,
+              color: '#ffffff'
             }
           },
           x: {
+            grid: {
+              color: 'rgba(255, 255, 255, 0.1)'
+            },
             ticks: {
               maxRotation: 45,
-              minRotation: 45
+              minRotation: 45,
+              color: '#ffffff'
             }
           }
         },
@@ -398,6 +425,13 @@ onUnmounted(() => {
   padding: 8px 16px;
   border-radius: 8px;
   border: 1px solid var(--border-color);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.date-range:hover {
+  background-color: var(--card-color);
+  color: var(--text-primary);
 }
 
 .dashboard-grid {

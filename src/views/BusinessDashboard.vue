@@ -227,7 +227,7 @@ onMounted(() => {
         labels: businessChartData.betDistribution.labels,
         datasets: [{
           data: businessChartData.betDistribution.datasets[0].data,
-          backgroundColor: businessChartData.betDistribution.datasets[0].backgroundColor
+          backgroundColor: ['#7c4dff', '#1a237e', '#0d47a1', '#2e7d32', '#f57c00']
         }]
       },
       options: {
@@ -238,12 +238,19 @@ onMounted(() => {
           legend: {
             position: 'bottom',
             labels: {
-              color: 'var(--chart-text-color)',
+              color: '#ffffff',
               padding: 20,
               font: {
                 size: 12
               }
             }
+          },
+          tooltip: {
+            titleColor: '#ffffff',
+            bodyColor: '#ffffff',
+            backgroundColor: '#1e1e1e',
+            borderColor: '#333333',
+            borderWidth: 1
           }
         }
       }
