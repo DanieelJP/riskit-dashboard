@@ -104,15 +104,30 @@ ion-title {
 }
 
 ion-button {
-  --color: var(--primary-light);
-  --background: var(--primary-dark);
-  --background-hover: var(--primary-color);
-  --background-activated: var(--primary-color);
+  --color: var(--text-primary) !important;
+  --background: transparent !important;
+  --background-hover: var(--surface-color) !important;
+  --background-activated: var(--surface-color) !important;
+  --ripple-color: var(--surface-color) !important;
   font-weight: 500;
   text-transform: none;
   --border-radius: 8px;
   --padding-start: 16px;
   --padding-end: 16px;
+  color: var(--text-primary) !important;
+}
+
+ion-button.button-clear {
+  --color: var(--text-primary) !important;
+  --background: transparent !important;
+  --background-hover: var(--surface-color) !important;
+  --background-activated: var(--surface-color) !important;
+  color: var(--text-primary) !important;
+}
+
+ion-button.button-clear:hover {
+  --background: var(--surface-color) !important;
+  opacity: 0.9;
 }
 
 ion-content {
