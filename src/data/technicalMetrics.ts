@@ -44,7 +44,7 @@ export const technicalMetrics: TechnicalMetric[] = [
     id: 'concurrent-sessions',
     name: 'Sesiones concurrentes',
     value: 1250,
-    unit: 'usuarios',
+    unit: ' usuarios',
     trend: 150,
     status: 'warning'
   }
