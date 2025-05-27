@@ -3,12 +3,6 @@
     <div class="dashboard-header">
       <div class="header-content">
         <h1>Dashboard Técnico</h1>
-        <div class="header-actions">
-          <router-link to="/kpis" class="action-button">
-            <span class="icon">📈</span>
-            Ver KPIs
-          </router-link>
-        </div>
       </div>
       <div class="date-range">
         <span>Últimos 30 días</span>

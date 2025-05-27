@@ -10,12 +10,15 @@
           <ion-button router-link="/technical" router-direction="forward">
             Técnico
           </ion-button>
+          <ion-button router-link="/kpis" router-direction="forward">
+            KPIs
+          </ion-button>
         </ion-buttons>
       </ion-toolbar>
     </ion-header>
-    <ion-content>
+        <ion-content>
       <router-view></router-view>
-    </ion-content>
+        </ion-content>
   </ion-app>
 </template>
 

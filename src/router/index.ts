@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
 import BusinessDashboard from '@/views/BusinessDashboard.vue';
 import TechnicalDashboard from '@/views/TechnicalDashboard.vue';
-import KpiList from '@/views/KpiList.vue';
+import KpiDashboard from '@/views/KpiDashboard.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -22,7 +22,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/kpis',
     name: 'kpis',
-    component: KpiList
+    component: KpiDashboard
   }
 ];
 
