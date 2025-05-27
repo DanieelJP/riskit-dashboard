@@ -74,7 +74,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
-import { technicalMetrics, technicalChartData } from '@/data/technicalMetrics';
+import { technicalMetrics, technicalChartData } from '../data/technicalMetrics';
 import Chart from 'chart.js/auto';
 import { use } from 'echarts/core';
 import { CanvasRenderer } from 'echarts/renderers';
@@ -138,7 +138,7 @@ const serverResponseOptions = {
     strokeDashArray: 4
   },
   xaxis: {
-    categories: technicalChartData.serverResponse.labels,
+    categories: technicalChartData.responseTime.labels,
     labels: {
       style: {
         colors: '#ffffff'
@@ -165,7 +165,7 @@ const serverResponseOptions = {
 
 const serverResponseSeries = [{
   name: 'Tiempo de respuesta',
-  data: technicalChartData.serverResponse.datasets[0].data
+  data: technicalChartData.responseTime.datasets[0].data
 }];
 
 // Opciones para el gráfico de sesiones concurrentes (ECharts)

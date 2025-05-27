@@ -74,7 +74,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
-import { businessMetrics, businessChartData } from '@/data/businessMetrics';
+import { businessMetrics, businessChartData } from '../data/businessMetrics';
 import Chart from 'chart.js/auto';
 import { use } from 'echarts/core';
 import { CanvasRenderer } from 'echarts/renderers';
@@ -88,7 +88,7 @@ use([CanvasRenderer, ScatterChart, GridComponent, TooltipComponent, LegendCompon
 // Referencias para los gráficos
 const betDistributionChart = ref<HTMLCanvasElement | null>(null);
 const realTimeChart = ref<HTMLCanvasElement | null>(null);
-let chartInstance: Chart | null = null;
+let chartInstance: any = null;
 let realTimeChartInstance: Chart | null = null;
 let realTimeInterval: number | null = null;
 

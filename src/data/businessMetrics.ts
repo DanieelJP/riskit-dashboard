@@ -56,20 +56,18 @@ export const businessChartData = {
   dailyRevenue: {
     labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'],
     datasets: [{
-      label: 'Ingresos diarios (€)',
-      data: [15000, 18000, 16500, 19000, 22000, 25000, 23000],
-      borderColor: '#1a237e',
-      backgroundColor: 'rgba(26, 35, 126, 0.1)',
-      fill: true
+      label: 'Ingresos Diarios',
+      data: [15000, 18000, 16500, 22000, 25000, 28000, 24000],
+      borderColor: '#4CAF50',
+      backgroundColor: 'rgba(76, 175, 80, 0.1)'
     }]
   },
   // ApexCharts - Barras
   betDistribution: {
-    labels: ['Deportes', 'Casino', 'Poker', 'Apuestas en vivo', 'Otros'],
+    labels: ['Fútbol', 'Baloncesto', 'Tenis', 'Otros'],
     datasets: [{
-      label: 'Distribución de apuestas',
-      data: [45, 25, 15, 10, 5],
-      backgroundColor: ['#1a237e', '#0d47a1', '#2e7d32', '#f57c00', '#c62828']
+      data: [45, 25, 20, 10],
+      backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0']
     }]
   },
   // ECharts - Dispersión
@@ -91,10 +89,12 @@ export const businessChartData = {
     }]
   },
   // Custom - Métricas de usuario
-  userMetrics: {
-    labels: ['Nuevos', 'Activos', 'Inactivos', 'Premium', 'VIP'],
-    values: [1200, 8500, 2300, 1500, 800]
-  },
+  userMetrics: [
+    { label: 'Nuevos Usuarios', value: 75 },
+    { label: 'Usuarios Activos', value: 85 },
+    { label: 'Retención', value: 65 },
+    { label: 'Engagement', value: 80 }
+  ],
   // Tiempo real - Apuestas activas
   realTimeBets: {
     labels: [],

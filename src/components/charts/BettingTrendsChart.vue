@@ -1,7 +1,7 @@
 <template>
   <div class="betting-trends">
     <div class="chart-container">
-      <div class="trend-line" v-for="(trend, index) in data.trends" :key="index">
+      <div class="trend-line" v-for="(trend, index) in props.trends" :key="index">
         <div class="trend-info">
           <div class="trend-label">{{ trend.label }}</div>
           <div class="trend-value">{{ trend.value }}%</div>
@@ -36,16 +36,12 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
-
 const props = defineProps<{
-  data: {
-    trends: Array<{
-      label: string;
-      value: number;
-      points: number[];
-    }>;
-  };
+  trends: Array<{
+    label: string;
+    value: number;
+    points: number[];
+  }>;
 }>();
 
 const colors = ['#1a237e', '#0d47a1', '#2e7d32', '#f57c00', '#c62828'];

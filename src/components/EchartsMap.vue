@@ -23,7 +23,7 @@ import {
 
 // GeoMap
 //import europeMap from '@/assets/europe.geo.json'
-import globalMap from '@/assets/global.geo.json'
+// import globalMap from '@/assets/global.geo.json'
 
 // Registrar módulos necesarios de ECharts
 echarts.use([
@@ -37,13 +37,13 @@ echarts.use([
 
 // Registrar el mapa de Europa en ECharts con ajuste para Islandia
 onMounted(() => {
-  echarts.registerMap('global', globalMap as any, {
-    Iceland: {
-      left: -20,
-      top: 65,
-      width: 12
-    }
-  })
+  // echarts.registerMap('global', globalMap as any, {
+  //   Iceland: {
+  //     left: -20,
+  //     top: 65,
+  //     width: 12
+  //   }
+  // })
 })
 
 // Props
